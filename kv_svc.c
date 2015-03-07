@@ -15,7 +15,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <syslog.h>
-#include <unistd.h>
+
 #ifdef __STDC__
 #define SIG_PF void(*)(int)
 #endif
