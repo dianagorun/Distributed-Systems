@@ -76,7 +76,7 @@ int open_connection_to_replicas() {
   	int i;
   	for (i = 0; i < ReplicaCount; i++) {
     		Replica[i] = clnt_create(ReplicaName[i], KVPROGRAM, KVVERSION, "tcp");
-    		if (Replica[i] == (CLIENT *)NULL) {
+    		if (Replica[i] == NULL) {
       			fprintf(stderr, "Connection to replica: \"%s\" failed.\n", ReplicaName[i]);
       			clnt_pcreateerror(ReplicaName[i]);
       			// Disconnect already opened connections.
@@ -110,7 +110,7 @@ int rget(CLIENT *clnt, char *key, char *refValue) {
   	}
   	strcpy(kv_key, key);
   	result = rget_1(&kv_key, clnt);
-  	if (result == (GetReply *)NULL) {
+  	if (result == NULL) {
     		clnt_perror(clnt, "GET: rpc error");
     		free(kv_key);
     		return GET_FAILED;
@@ -298,7 +298,7 @@ int * accept_execute_del(void* thread_data) {
 PrepReply* raccept_prepare_put(CLIENT *clnt,int n) {
 	static PrepReply response;
 	response.vote = PROMISE;
-	if(n == (int)NULL) {
+	if(n ==0) {
 		fprintf(stderr,"PUT: no n provided to prepare\n");
 		return NULL;
 	}
