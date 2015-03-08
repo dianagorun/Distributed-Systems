@@ -146,8 +146,8 @@ PrepReply * accept_prepare_put(void* thread_args) {
     r = r%2;
 	if (r == 1)
   {
-    printf("Server Crash");
-    sleep(30);
+    //printf("Server Crash");
+    //sleep(30);
   }
   struct PrepReq* request;
 	request = (struct PrepReq*)thread_args;
