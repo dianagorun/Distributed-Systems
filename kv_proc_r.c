@@ -499,7 +499,8 @@ int * propose_execute_put(void* thread_data) {
 		return(&result);//if local machine could not execute put, do not send to remote and return failure
 	}
 	replicate_begin();//local put was successful, open replica connection
-	for(int i=0;i<ReplicaCount;i++) {//execute delete for each replica
+    int i;
+	for(i=0;i<ReplicaCount;i++) {//execute delete for each replica
 		if((remoteResult=*raccept_execute_put(Replica[i],kv->key,kv->value))!=PUT_OK) {
 			result = remoteResult;//if a single replica fails, a failure result is reported
 		}
