@@ -346,7 +346,7 @@ int* raccept_execute_put(CLIENT *clnt, char *key, char *value) {
   	}
   	strcpy(kv.value, value);
   	result = *accept_execute_put_1(&kv, clnt);//get the result from the accept_execute_put_1_svc() function of this replica
-  	if (result == (int)NULL) {
+  	if (result == 0) {
     		clnt_perror(clnt, "PUT: rpc error");    
     		free(kv.key);
     		free(kv.value);
@@ -370,7 +370,7 @@ int* raccept_execute_del(CLIENT *clnt, char *key) {
   	}
   	strcpy(kv_key, key);
   	result = *accept_execute_del_1(kv_key, clnt);//get the result from the accept_execute_del_1_svc() function of this replica
-  	if (result == (int)NULL) {
+  	if (result == 0) {
     		clnt_perror(clnt, "DEL: rpc error");
     		free(kv_key);
     		result= DEL_FAILED;
