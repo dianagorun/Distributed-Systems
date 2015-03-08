@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "kv.h"
 #include "kv_proto.h"
+#include <unistd.h>
 #define MAX_REPLICA 4
 const char* ResponseText[] = {
   "succeeded",
