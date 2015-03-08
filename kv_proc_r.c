@@ -453,7 +453,8 @@ int * propose_prepare_put(void* req) {
 		dynamicCount++;
 	}
 	replicate_begin();//open replica connection
-	for(int i=0; i<ReplicaCount;i++) {//send prepare request to each replica
+    int i;
+	for(i=0; i<ReplicaCount;i++) {//send prepare request to each replica
 		if((reply = raccept_prepare_put(Replica[i],*n))->vote==PROMISE) {
 			dynamicCount++; //if a replica promises,increase the yes count
 		}
