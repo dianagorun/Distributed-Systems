@@ -313,7 +313,7 @@ PrepReply* raccept_prepare_put(CLIENT *clnt,int n) {
 //call accept_prepare_del_1_svc() for a particular replica
 PrepReply* raccept_prepare_del(CLIENT *clnt,int n) {
 	static PrepReply response;
-	if(n == (int)NULL) {
+	if(n == 0) {
 		fprintf(stderr,"PUT: no n provided to prepare\n");
 		return NULL;
 	}
