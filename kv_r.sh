@@ -2,7 +2,7 @@ rpcgen kv.x
 cc -c kv_xdr.c
 cc -c kv_svc.c
 cc -c kv_clnt.c
-cc -pthread -o kv_proc kv_proc_r.c -lnsl
-cc -c rkv.c -lnsl
-cc -o server kv_xdr.o kv_svc.o kv_proc_r.o kv_clnt.o -lnsl
-cc -o client kv_xdr.o kv_clnt.o rkv.o -lnsl
+cc -pthread -o kv_proc kv_proc_r.c
+cc -c rkv.c
+cc -o server kv_xdr.o kv_svc.o kv_proc_r.o kv_clnt.o
+cc -o client kv_xdr.o kv_clnt.o rkv.o
