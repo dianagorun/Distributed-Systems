@@ -474,7 +474,8 @@ int * propose_prepare_del(void* req) {
 		dynamicCount++;//increase yes count if local vote is yes
 	}
 	replicate_begin();//open replica connection
-	for(int i=0; i<ReplicaCount;i++) {//send prepare request to each replica
+    int i;
+    for(i=0; i<ReplicaCount;i++) {//send prepare request to each replica
 		if((reply = raccept_prepare_del(Replica[i],*n))->vote==PROMISE) {
 			dynamicCount++; //if a replica promises,increase the yes count
 		}
