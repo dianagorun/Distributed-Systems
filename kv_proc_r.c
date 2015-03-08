@@ -557,7 +557,7 @@ int * thread_put_1_svc(void* thread_data) {
   	pthread_join(proposer_thread,(void*)&count);//get number of OK results
 	if(*count < ceil(ReplicaCount/2)) {
 		fprintf(stderr,"PUT: was unable to get majority\n");
-		return PUT_FAILED;//couldn't get majority, return failure
+		return (int*)PUT_FAILED;//couldn't get majority, return failure
 	}
 	pthread_create(&proposer_thread,NULL,(void*)propose_execute_put,(void*)my_data);
 	pthread_join(proposer_thread,(void*)&result);//save the final result from the execute here
@@ -580,7 +580,7 @@ int * thread_del_1_svc(void* thread_data) {
 	pthread_join(proposer_thread,(void*)&count); //get number of OK results
 	if(*count < ceil(ReplicaCount/2)) {
 		fprintf(stderr, "DEL: was unable to get majority\n");
-    		return DEL_FAILED;//couldn't get a majority, return failure
+        return (int*)DEL_FAILED;
 	}
 	//proposer goes to propose_execute_del to send delete request
 	pthread_create(&proposer_thread,NULL,(void*)propose_execute_del,(void*)my_data);
